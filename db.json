@@ -1,0 +1,13 @@
+{
+  "contacts": [
+    {
+      "first": "Chris",
+      "last": "Lacey",
+      "twitter": "chrislacey89",
+      "avatar": "https://pbs.twimg.com/profile_images/1566590820173709312/4anpKJLy_400x400.jpg",
+      "notes": "Hello World!",
+      "favorite": false,
+      "id": "2"
+    }
+  ]
+}

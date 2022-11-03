@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-idiomatic-order"
+  ],
+  "plugins": [
+    "stylelint-group-selectors",
+    "stylelint-color-format",
+    "stylelint-prettier"
+  ],
+  "rules": {
+    "plugin/stylelint-group-selectors": true,
+    "prettier/prettier": true,
+    "declaration-block-no-duplicate-properties": true,
+    "color-format/format": {
+      "format": "hsl"
+    }
+  }
+}
