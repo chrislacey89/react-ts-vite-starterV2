@@ -6,8 +6,17 @@
       "twitter": "chrislacey89",
       "avatar": "https://pbs.twimg.com/profile_images/1566590820173709312/4anpKJLy_400x400.jpg",
       "notes": "Hello World!",
-      "favorite": false,
+      "favorite": true,
       "id": "2"
+    },
+    {
+      "first": "Chris",
+      "last": "Test",
+      "twitter": "@test",
+      "avatar": "asdf",
+      "notes": "sadf",
+      "favorite": false,
+      "id": "SbUShwn"
     }
   ]
 }

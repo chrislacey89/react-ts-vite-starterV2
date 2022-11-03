@@ -1,27 +1,6 @@
 import React from 'react'
-import {
-  Form,
-  redirect,
-  useNavigate,
-  ActionFunction,
-  useParams,
-} from 'react-router-dom'
-import type { QueryClient } from '@tanstack/react-query'
-import { updateContact, ContactInfo } from '../react-query/queryFunctions'
-import { queryKeys } from '../react-query/contstants'
+import { Form, useNavigate, useParams } from 'react-router-dom'
 import { useGetContact } from '../react-query/queries/useGetContact'
-export function action(queryClient: QueryClient): ActionFunction {
-  return async function update({ request, params }) {
-    const formData: FormData = await request.formData()
-    const updates = Object.fromEntries(formData) as ContactInfo
-
-    if (params.contactId) {
-      await updateContact(params.contactId, updates)
-      await queryClient.invalidateQueries([queryKeys.contacts])
-      return redirect(`/contacts/${params.contactId}`)
-    }
-  }
-}
 
 export default function EditContact() {
   const { contactId } = useParams()

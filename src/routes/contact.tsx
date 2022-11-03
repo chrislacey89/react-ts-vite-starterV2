@@ -1,45 +1,8 @@
 import React from 'react'
-import {
-  Form,
-  useLoaderData,
-  useFetcher,
-  LoaderFunction,
-  useParams,
-  ActionFunction,
-} from 'react-router-dom'
-import type { QueryClient } from '@tanstack/react-query'
-import { queryKeys } from '../react-query/contstants'
-import { updateContact, ContactInfo } from '../react-query/queryFunctions'
-import {
-  useGetContact,
-  contactQuery,
-} from '../react-query/queries/useGetContact'
+import { Form, useFetcher, useParams } from 'react-router-dom'
 
-export function action(queryClient: QueryClient): ActionFunction {
-  return async function update({ request, params }) {
-    const formData = await request.formData()
-    const updates = Object.fromEntries(formData) as ContactInfo
+import { useGetContact } from '../react-query/queries/useGetContact'
 
-    if (params.contactId) {
-      await updateContact(params.contactId, {
-        ...updates,
-        favorite: formData.get('favorite') === 'false',
-      })
-    }
-    await queryClient.invalidateQueries([queryKeys.contacts])
-  }
-}
-
-export function loader(queryClient: QueryClient): LoaderFunction {
-  return async function load({ params }) {
-    if (params.contactId) {
-      const query = contactQuery(params.contactId)
-
-      queryClient.getQueryData(query.queryKey) ??
-        (await queryClient.fetchQuery(query))
-    }
-  }
-}
 export default function Contact() {
   const { contactId } = useParams()
   const { data: contact } = useGetContact(contactId ?? '')
