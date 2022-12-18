@@ -2,7 +2,7 @@
   "name": "vite-reactts-eslint-prettier",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --open",
+    "dev": "concurrently \"pnpm vite --open\" \"pnpm json-server\"",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
@@ -34,6 +34,7 @@
     "@vitejs/plugin-react": "^2.1.0",
     "@vitejs/plugin-react-refresh": "^1.3.6",
     "autoprefixer": "^10.4.12",
+    "concurrently": "^7.6.0",
     "csstype": "^3.1.1",
     "eslint": "^8.25.0",
     "eslint-config-kentcdodds": "^20.4.0",
