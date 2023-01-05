@@ -8,6 +8,7 @@ import { contactQuery } from '../react-query/queries/useGetContact'
 export function action(queryClient: QueryClient): ActionFunction {
   return async function update({ request, params }) {
     const formData = await request.formData()
+
     const updates = Object.fromEntries(formData) as ContactInfo
 
     if (params.contactId) {
@@ -17,6 +18,7 @@ export function action(queryClient: QueryClient): ActionFunction {
       })
     }
     await queryClient.invalidateQueries([queryKeys.contacts])
+    return queryClient
   }
 }
 
@@ -28,6 +30,7 @@ export function loader(queryClient: QueryClient): LoaderFunction {
       queryClient.getQueryData(query.queryKey) ??
         (await queryClient.fetchQuery(query))
     }
+    return queryClient
   }
 }
 
