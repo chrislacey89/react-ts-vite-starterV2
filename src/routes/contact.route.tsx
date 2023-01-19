@@ -5,11 +5,15 @@ import { queryKeys } from '../react-query/contstants'
 import { updateContact, ContactInfo } from '../react-query/queryFunctions'
 import { contactQuery } from '../react-query/queries/useGetContact'
 
+type FormData = {
+  [K in keyof ContactInfo]: string
+}
 export function action(queryClient: QueryClient): ActionFunction {
   return async function update({ request, params }) {
     const formData = await request.formData()
 
-    const updates = Object.fromEntries(formData) as ContactInfo
+    const updates = Object.fromEntries(formData) as FormData
+    console.log('🚀  file: contact.route.tsx:13  updates', updates)
 
     if (params.contactId) {
       await updateContact(params.contactId, {
